@@ -1,6 +1,7 @@
 .env
 yarn.lock
 package-lock.json
+*.local
 
 # Logs
 logs

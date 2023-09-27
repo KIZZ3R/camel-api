@@ -1,8 +1,10 @@
-import 'dotenv/config'
 import 'express-async-errors'
 
 import cors from 'cors'
 import express from 'express'
+
+import './config/dotenv.js'
+import './config/db.js'
 
 import AppError from './utils/AppError.js'
 // import routes from './routes'
