@@ -5,7 +5,7 @@ import { Sequelize } from 'sequelize'
 const sequelize = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 123456,
+  password: process.env.DB_PASSWORD || '123456',
   host: process.env.DB_HOST,
   dialect: process.env.DB_DIALECT || 'postgres',
   storage: process.env.NODE_ENV === 'test' ? ':memory:' : undefined,
