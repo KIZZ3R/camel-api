@@ -6,7 +6,7 @@ const sequelize = new Sequelize({
   database: process.env.DB_NAME,
   username: process.env.DB_USER || 'postgres',
   password: process.env.DB_PASSWORD || '123456',
-  host: process.env.DB_HOST,
+  host: process.env.DB_HOST || 'localhost',
   dialect: process.env.DB_DIALECT || 'postgres',
   storage: process.env.NODE_ENV === 'test' ? ':memory:' : undefined,
   logging: false,

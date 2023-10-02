@@ -6,6 +6,19 @@ on:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 123456
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - uses: actions/checkout@v2
 
@@ -19,12 +32,6 @@ jobs:
 
       - name: Lint
         run: npm run lint
-
-      - name: Install PostgreSQL
-        run: sudo apt-get install postgresql -y
-
-      - name: Start PostgreSQL
-        run: sudo systemctl start postgresql
 
       - name: Test
         run: npm run test
