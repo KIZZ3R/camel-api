@@ -6,10 +6,6 @@ on:
 jobs:
   pipeline:
     runs-on: ubuntu-latest
-    env:
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      DB_DIALECT: ${{ secrets.DB_DIALECT }}
     steps:
       - uses: actions/checkout@v2
 
@@ -23,12 +19,6 @@ jobs:
 
       - name: Lint
         run: npm run lint
-
-      - name: Set Environment Variables
-        run: |
-          echo "DB_USER=$DB_USER" >> $GITHUB_ENV
-          echo "DB_PASSWORD=$DB_PASSWORD" >> $GITHUB_ENV
-          echo "DB_DIALECT=$DB_DIALECT" >> $GITHUB_ENV
 
       - name: Test
         run: npm run test
