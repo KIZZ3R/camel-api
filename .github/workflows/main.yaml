@@ -20,14 +20,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Check PostgreSQL status
-        run: |
-          if service postgresql status; then
-            echo "PostgreSQL is running."
-          else
-            echo "PostgreSQL is not running. Starting PostgreSQL..."
-            systemctl start postgresql
-          fi
+      - name: Install PostgreSQL
+        run: sudo apt-get install postgresql -y
+
+      - name: Start PostgreSQL
+        run: sudo systemctl start postgresql
 
       - name: Test
         run: npm run test
