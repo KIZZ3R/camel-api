@@ -1,0 +1,24 @@
+name: CI
+on:
+  pull_request:
+    branches: ['develop', 'main']
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.16.0'
+
+      - name: Install dependencies
+        run: npm i install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
