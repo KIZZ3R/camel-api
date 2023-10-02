@@ -8,7 +8,7 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
-  storage: process.env.DB_DIALECT,
+  storage: process.env.NODE_ENV === 'test' ? ':memory:' : undefined,
   logging: false,
   define: {
     paranoid: true, // Habilita a deleção lógica em todos os modelos
