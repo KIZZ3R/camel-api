@@ -1,40 +1,43 @@
 import 'express-async-errors'
 
 import cors from 'cors'
+import morgan from 'morgan'
 import express from 'express'
 
 import './config/dotenv.js'
 import './config/db.js'
 
-import AppError from './utils/AppError.js'
-// import routes from './routes'
+import routes from './api/index.js'
+import exceptionHandler from './middlewares/errors-handlers.js'
 
 const app = express()
 
 // Use Cors
-app.use(cors())
+app.use(
+  cors({
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Api-Key'],
+    exposedHeaders: ['x-count'],
+  }),
+)
+
+// Use Morgan
+app.use(morgan('dev'))
 
 // Use Body Parser JSON Middleware
 app.use(express.json())
 
+// Initiate Request Locals Object
+app.use((request, _response, next) => {
+  Object.assign(request, { locals: {} })
+
+  next()
+})
+
 // Routes
-// app.use(routes)
+app.use(routes)
 
 // Use Error Handler
-app.use((error, req, res, _next) => {
-  if (error instanceof AppError) {
-    return res.status(error.statusCode).json({
-      status: 'error',
-      message: error.message,
-    })
-  }
-
-  console.error(error)
-
-  return res.status(500).json({
-    status: 'error',
-    message: 'Internal server error!',
-  })
-})
+app.use(exceptionHandler)
 
 export default app

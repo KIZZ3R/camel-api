@@ -1,6 +1,6 @@
 export default class AppError {
-  constructor(message, statusCode = 400) {
-    this.message = message
+  constructor(statusCode = 400, message) {
     this.statusCode = statusCode
+    this.message = message
   }
 }

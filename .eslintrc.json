@@ -1,7 +1,8 @@
 {
   "env": {
     "es2021": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
@@ -11,6 +12,8 @@
   "plugins": ["prettier", "import"],
   "rules": {
     "prettier/prettier": "error",
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "import/no-commonjs": "error",
+    "no-console": "warn"
   }
 }
