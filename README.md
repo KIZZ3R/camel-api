@@ -1,0 +1,37 @@
+name: CI
+on:
+  pull_request:
+    branches: ['develop', 'main']
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 123456
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.16.0'
+
+      - name: Install dependencies
+        run: npm i install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
