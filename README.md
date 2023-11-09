@@ -14,7 +14,7 @@ Este projeto é uma API do sistema da Loja Virtual da Camel, para atendimento a 
 
 ## Instalação
 
-1. Faça o clone do repositório: `git clone https://github.com/Elias-Neto/camel`
+1. Faça o clone do repositório: `git clone https://github.com/Elias-Neto/camel-api`
 2. Instale as dependências: `npm i`
 3. Configure as variáveis de ambiente (veja a seção "Configuração" abaixo)
 4. Inicie o servidor: `npm run dev`
