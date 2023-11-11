@@ -19,6 +19,11 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
+    
+    env:
+      JWT_SECRET: mJLwAc8Zr6gUGb5G2Erx9PzR4BfNsqKt
+      JWT_EXPIRES_IN: 1d
+      
     steps:
       - uses: actions/checkout@v2
 

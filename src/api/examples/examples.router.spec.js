@@ -7,12 +7,13 @@ import { loadSeedData } from '../../../test/utils'
 import * as helper from '../../helpers/object-helper.js'
 
 beforeAll(async () => {
-  await sequelize.sync({ force: true }) // Crie as tabelas no banco de dados de teste
-  await loadSeedData()
+  await sequelize.sync({ force: true }) // Cria as tabelas no banco de dados de teste
+  await loadSeedData('examples')
 })
 
 afterAll(async () => {
-  await sequelize.close() // Feche a conexão com o banco de dados de teste
+  await sequelize.drop() // Apaga as tabelas no banco de dados de teste
+  await sequelize.close() // Fecha a conexão com o banco de dados de teste
 })
 
 describe('[POST] - /examples', () => {

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "João Silva",
+    "email": "joao.silva@example.com",
+    "password": "$2a$12$a50taWcB9FSZIx6/fu9Itu9B66A5PWKv5711PQol2SHW5hLA0kj1K",
+    "cpf": "12345678901",
+    "phone": "987654321",
+    "deletedAt": null
+  },
+  {
+    "id": 2,
+    "name": "Maria Oliveira",
+    "email": "maria.oliveira@example.com",
+    "password": "$2a$12$rGJi5IHge5C76k8fCI66y.gTlX.DffZu2HHqnR.iZ/m5S5Ql/Fjtm",
+    "cpf": "98765432109",
+    "phone": "123456789",
+    "deletedAt": null
+  }
+]
